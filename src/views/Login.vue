@@ -1,8 +1,8 @@
 <template>
-	<div class="login_container">
-		<div class="login_box">
+	<div class="login-container">
+		<div class="login-box">
 			<el-form :model="loginForm" :rules="loginFormRelues" ref="loginFormRef" label-width="0px"
-				class="login_form">
+				class="login-form">
 				<!--用户名-->
 				<el-form-item prop="username">
 					<el-input v-model="loginForm.username" prefix-icon="el-icon-user"></el-input>
@@ -18,7 +18,7 @@
 					<el-radio v-model="loginForm.radio" label="3">管理员</el-radio>
 				</el-form-item>
 				<!--按钮-->
-				<el-form-item class="btn_s">
+				<el-form-item class="btn-s">
 					<el-button type="primary" @click="login">登录</el-button>
 					<el-button type="info" @click="resetLoginForm">重置</el-button>
 				</el-form-item>
@@ -62,38 +62,35 @@
 				this.$refs.loginFormRef.validate(valid => {
 					if (!valid) {
 						this.$message.warning('登录失败');
-						
+
 					} else {
-						/*this.$axios
-							.post('127.0.0.1',this.loginForm)
+						this.$axios
+							.post('login', this.loginForm)
 							.then(response => {
-								
+
 							})
 							.catch(error => {
 								console.log(error)
 								this.errored = true
 							})
-							.finally(() => this.loading = false)*/
-							this.$message.success('登录成功');
-							window.sessionStorage.setItem('sss','sss');
-							this.$router.push("/home")
-							
+							.finally(() => this.loading = false)
+						this.$message.success('登录成功');
+						window.sessionStorage.setItem('token', 'sss');
+						this.$router.push("/home")
 					}
-					
 				});
 			}
 		}
-
 	};
 </script>
 
-<style lang="less" scoped="scoped">
-	.login_container {
+<style lang="less" scoped>
+	.login-container {
 		background-color: #2b4b6b;
 		height: 100%;
 	}
 
-	.login_box {
+	.login-box {
 		width: 450px;
 		height: 300px;
 		background-color: #FFFFFF;
@@ -104,7 +101,7 @@
 		transform: translate(-50%, -50%);
 	}
 
-	.login_form {
+	.login-form {
 		width: 100%;
 		position: absolute;
 		bottom: 0;
@@ -112,7 +109,7 @@
 		box-sizing: border-box;
 	}
 
-	.btn_s {
+	.btn-s {
 		display: flex;
 		justify-content: flex-end;
 	}
